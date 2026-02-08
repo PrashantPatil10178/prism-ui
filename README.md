@@ -1,135 +1,221 @@
-# Turborepo starter
+# Prism UI
 
-This Turborepo starter is maintained by the Turborepo core team.
+<div align="center">
+  <strong>Production-Ready Headless React Components</strong>
+  <br />
+  <br />
+  <em>Zero visual opinions. Complete accessibility. Infinite flexibility.</em>
+</div>
 
-## Using this example
+<br />
 
-Run the following command:
+Prism UI is a headless React component system designed for teams building multiple products with different design systems. It provides **behavior and accessibility** without forcing visual constraints—bring your own styles, tokens, and brand.
 
-```sh
-npx create-turbo@latest
-```
+## ✨ Why Prism UI?
 
-## What's inside?
+Modern teams need consistent behavior without visual lock-in. Prism UI solves this by:
 
-This Turborepo includes the following packages/apps:
+- 🎯 **Headless Architecture** — Components render semantic HTML with zero CSS
+- ♿ **Accessibility First** — WCAG 2.1 AA compliant with comprehensive ARIA support
+- 🎨 **Style Agnostic** — Use CSS-in-JS, CSS Modules, Tailwind, or vanilla CSS
+- 🔧 **Customizable** — Full control over markup via polymorphic `as` prop
+- ⚡ **Performance** — Tree-shakeable, zero dependencies beyond React
+- 📦 **Type Safe** — Written in TypeScript with complete type definitions
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
+## 📦 Monorepo Structure
 
 ```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
+prism-ui/
+├─ packages/
+│  └─ ui/              # @prism-ui/react - Headless component library
+├─ apps/
+│  ├─ demo/            # Interactive showcase with theme switching
+│  └─ docs/            # Full documentation site
+├─ turbo.json          # Turborepo pipeline configuration
+├─ package.json        # Workspace root configuration
+└─ pnpm-workspace.yaml # pnpm workspace definition
 ```
 
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+## 🚀 Quick Start
 
-```
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
+### Installation
 
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
+```bash
+# Ibash
+pnpm install
 ```
 
-### Develop
+Run all apps in development mode:
 
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
+```bash
+pnpm dev
 ```
 
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+This starts:
 
-```
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
+- **Demo app** at `http://localhost:5173`
+- **Docs site** at `http://localhost:5174`
 
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
+### Individual Apps
 
-### Remote Caching
+```bash
+# Run demo app only
+pnpm dev --filter demo
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+# Run docs site only
+pnpm dev --filter docs
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+# Build the UI package
+pnpm build --filter @prism-ui/react
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+# Run all tests
+pnpm test
 
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
+# Build everything for production
+pnpm build
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## 📖 Components
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+### Currently Available
+
+- **Button** — Interactive button with loading and disabled states
+- **Card** — Flexible content container with header/body/footer
+- **Dialog** — Accessible modal with backdrop and focus management
+- **Input** — Form field with label, helper text, and error handling
+- **Tabs** — Keyboard-navigable tab interface with ARIA support
+
+### Coming Soon
+
+- Select / Combobox
+- Checkbox / Radio
+- Accordion
+- Tooltip
+- Popover
+- Toast Notifications
+
+## 🎯 Design Principles
+
+1. **Behavior over appearance** — We handle interactions, you handle visuals
+2. **Accessibility is not optional** — Every component meets WCAG 2.1 AA
+3. **Minimal API surface** — Simple props, maximum flexibility
+4. **Progressive enhancement** — Works with SSR, hydration, and client-side
+5. **Type safety** — Full TypeScript support with excellent IntelliSense
+
+## 📚 Documentation
+
+Visit the docs site locally with `pnpm dev` or explore:
+
+- **Theming Guide** — How to style components with CSS variables
+- **Component API** — Props, data attributes, and ARIA patterns
+- **Examples** — Real-world usage patterns
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our contributing guide for details.
+
+## 📄 License
+
+MIT © Prism UI
+
+---
+
+<div align="center">
+  Built with ❤️ using React, TypeScript, and Turborepo
+</div>
+  );
+}
+```
+
+Style it however you want:
+
+```css
+.my-button {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.my-button[data-loading="true"] {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.my-button[data-disabled="true"] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+```
+
+## 🛠️ Development
+
+Install dependencies once at the root:
 
 ```
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
+pnpm install
 ```
 
-## Useful Links
+Run everything:
 
-Learn more about the power of Turborepo:
+```
+pnpm dev
+```
 
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+### Demo app
+
+```
+pnpm dev --filter demo
+```
+
+### Docs site
+
+```
+pnpm dev --filter docs
+```
+
+### Build the UI package
+
+```
+pnpm build --filter @prism-ui/react
+```
+
+## Theming strategy
+
+Prism UI exposes state via props and data attributes. Apps can style based on `data-loading`, `data-invalid`, or `data-state` without modifying library code. Themes are implemented using CSS variables and a `data-theme` attribute on the HTML root.
+
+## Publishing workflow
+
+`packages/ui` is independently publishable.
+
+```
+cd packages/ui
+npm login
+npm publish --access public
+```
+
+### Versioning
+
+Semantic versioning is required:
+
+- **Major** for breaking changes
+- **Minor** for new components or non-breaking features
+- **Patch** for bug fixes
+
+Changesets are recommended for tracking releases.
+
+## Upgrade & maintenance strategy
+
+1. Review the changelog for breaking changes.
+2. Update versions with `pnpm update`.
+3. Run tests in consuming apps to confirm integration.
+
+## Key design decisions
+
+- Headless-only components to preserve separation of concerns.
+- Explicit state exposure with `data-*` attributes for styling.
+- Composition-first APIs for flexibility in consuming apps.
+- Vite-based demo and docs for fast iteration and static hosting.

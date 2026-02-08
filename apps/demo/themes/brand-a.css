@@ -1,0 +1,11 @@
+:root[data-theme="brand-a"] {
+  /* Dark Professional Theme - Midnight Blue */
+  --color-bg: #0a0e1a;
+  --color-fg: #f0f4f8;
+  --color-muted: #8b98b3;
+  --color-accent: #3b82f6;
+  --color-border: #1e293b;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+}

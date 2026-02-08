@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prism UI Toast - Vanilla JS Demo</title>
+
+    <!-- Include Prism Toast (Vanilla JS - No dependencies!) -->
+    <script src="../src/toast/toast-vanilla.js"></script>
+
+    <!-- Toast Styles -->
+    <link rel="stylesheet" href="../src/toast/toast-vanilla.css" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background: #09090b;
+        color: #fafafa;
+        padding: 48px 24px;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 16px;
+        background: linear-gradient(to bottom, #fafafa, #a1a1aa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .subtitle {
+        font-size: 1.125rem;
+        color: #a1a1aa;
+        margin-bottom: 48px;
+      }
+
+      .section {
+        margin-bottom: 48px;
+      }
+
+      .section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+        color: #fafafa;
+      }
+
+      .button-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      button {
+        padding: 12px 20px;
+        border: 1px solid #3f3f46;
+        border-radius: 8px;
+        background: #18181b;
+        color: #fafafa;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.15s ease;
+      }
+
+      button:hover {
+        background: #27272a;
+        border-color: #52525b;
+        transform: translateY(-1px);
+      }
+
+      button.primary {
+        background: #fafafa;
+        color: #09090b;
+        border-color: #fafafa;
+      }
+
+      button.primary:hover {
+        background: #e4e4e7;
+      }
+
+      button.destructive {
+        background: #dc2626;
+        border-color: #dc2626;
+      }
+
+      button.destructive:hover {
+        background: #b91c1c;
+      }
+
+      .code-block {
+        background: #18181b;
+        border: 1px solid #27272a;
+        border-radius: 8px;
+        padding: 16px;
+        font-family: "Courier New", monospace;
+        font-size: 0.875rem;
+        overflow-x: auto;
+        margin-top: 16px;
+      }
+
+      .code-block code {
+        color: #a1a1aa;
+      }
+
+      .note {
+        background: rgba(59, 130, 246, 0.1);
+        border-left: 3px solid #3b82f6;
+        padding: 16px;
+        border-radius: 8px;
+        margin-top: 16px;
+        color: #93c5fd;
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎉 Prism UI Toast</h1>
+      <p class="subtitle">
+        Vanilla JavaScript toast notifications. Zero dependencies. Zero React.
+        Just works.
+      </p>
+
+      <div class="section">
+        <h2>Basic Types</h2>
+        <p>Click to see different toast notification types:</p>
+        <div class="button-grid">
+          <button onclick="showSuccess()">✓ Success</button>
+          <button onclick="showError()">✗ Error</button>
+          <button onclick="showInfo()">ℹ Info</button>
+          <button onclick="showWarning()">⚠ Warning</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Advanced</h2>
+        <p>Toasts with actions and custom durations:</p>
+        <div class="button-grid">
+          <button class="primary" onclick="showWithAction()">
+            With Action
+          </button>
+          <button onclick="showPersistent()">Persistent Toast</button>
+          <button onclick="showQuick()">Quick (2s)</button>
+          <button class="destructive" onclick="showMultiple()">
+            Show Multiple
+          </button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Usage</h2>
+        <div class="code-block">
+          <code>
+            &lt;!-- Include the script --&gt;<br />
+            &lt;script
+            src="https://unpkg.com/@prism-ui/react@latest/dist/toast-vanilla.js"&gt;&lt;/script&gt;<br /><br />
+
+            &lt;!-- Use in your code --&gt;<br />
+            &lt;script&gt;<br />
+            &nbsp;&nbsp;PrismToast.success('Success!', 'Operation
+            completed.');<br />
+            &lt;/script&gt;
+          </code>
+        </div>
+
+        <div class="note">
+          <strong>💡 Tip:</strong> No React required! This works with plain
+          HTML, WordPress, PHP, or any website.
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Basic toast types
+      function showSuccess() {
+        PrismToast.success("Success!", "Your changes have been saved.");
+      }
+
+      function showError() {
+        PrismToast.error("Error", "Something went wrong. Please try again.");
+      }
+
+      function showInfo() {
+        PrismToast.info("Info", "This is an informational message.");
+      }
+
+      function showWarning() {
+        PrismToast.warning("Warning", "Please review your settings.");
+      }
+
+      // Advanced usage
+      function showWithAction() {
+        PrismToast.show({
+          title: "File deleted",
+          description: "Your file has been moved to trash.",
+          type: "info",
+          action: {
+            label: "Undo",
+            onClick: () => {
+              PrismToast.success("Restored", "File has been restored.");
+            },
+          },
+        });
+      }
+
+      function showPersistent() {
+        PrismToast.show({
+          title: "Important Notice",
+          description: "This toast will not auto-dismiss. Close it manually.",
+          type: "warning",
+          duration: Infinity,
+        });
+      }
+
+      function showQuick() {
+        PrismToast.show({
+          title: "Quick message",
+          description: "This will disappear in 2 seconds.",
+          type: "info",
+          duration: 2000,
+        });
+      }
+
+      function showMultiple() {
+        setTimeout(() => PrismToast.success("First", "Toast 1"), 0);
+        setTimeout(() => PrismToast.info("Second", "Toast 2"), 200);
+        setTimeout(() => PrismToast.warning("Third", "Toast 3"), 400);
+        setTimeout(() => PrismToast.error("Fourth", "Toast 4"), 600);
+      }
+    </script>
+  </body>
+</html>

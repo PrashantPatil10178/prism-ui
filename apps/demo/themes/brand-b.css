@@ -1,0 +1,11 @@
+:root[data-theme="brand-b"] {
+  /* Light Professional Theme - Warm Minimal */
+  --color-bg: #fefcfb;
+  --color-fg: #1a1a1a;
+  --color-muted: #666666;
+  --color-accent: #8b5cf6;
+  --color-border: #e5e5e5;
+  --color-success: #059669;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
+}
