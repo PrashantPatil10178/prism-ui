@@ -66,12 +66,12 @@ yarn add prism-ui-headless-react
 <script>
   // Initialize Toast
   PrismToast.init();
-  
+
   // Show a toast
   PrismToast.show({
-    title: 'Success!',
-    description: 'Your changes have been saved.',
-    variant: 'success'
+    title: "Success!",
+    description: "Your changes have been saved.",
+    variant: "success",
   });
 </script>
 ```
@@ -230,6 +230,7 @@ git push origin feature/your-feature-name
 ### Reporting Issues
 
 Found a bug? Please [open an issue](https://github.com/PrashantPatil10178/prism-ui/issues) with:
+
 - Component name and version
 - Steps to reproduce
 - Expected vs actual behavior
@@ -257,15 +258,15 @@ Free to use in personal and commercial projects.
 Import components and use them with your own styles:
 
 ```jsx
-import { Button } from 'prism-ui-headless-react';
+import { Button } from "prism-ui-headless-react";
 
 function App() {
   return (
-    <Button 
+    <Button
       className="my-button"
       loading={false}
       disabled={false}
-      onClick={() => console.log('Clicked!')}
+      onClick={() => console.log("Clicked!")}
     >
       Click Me
     </Button>
@@ -315,7 +316,8 @@ All components expose their state through data attributes:
 - `data-variant` — Toast variant (success, error, warning, info)
 
 This allows you to style components based on their behavior without JavaScript.
-```
+
+````
 
 ## 🛠️ Development
 
@@ -336,7 +338,7 @@ pnpm test
 
 # Type check
 pnpm typecheck
-```
+````
 
 ### Working with Individual Apps
 
@@ -411,8 +413,12 @@ Prism UI exposes component state via data attributes, allowing flexible styling 
   color: var(--button-text);
 }
 
-.button[data-loading="true"] { /* loading styles */ }
-.button[data-disabled="true"] { /* disabled styles */ }
+.button[data-loading="true"] {
+  /* loading styles */
+}
+.button[data-disabled="true"] {
+  /* disabled styles */
+}
 ```
 
 ### Build Configuration
@@ -437,6 +443,7 @@ The `packages/ui` is published to npm as `prism-ui-headless-react`.
 ### Current Version: v1.3.0
 
 **What's New in v1.3.0:**
+
 - ✅ CDN support with `toast-vanilla.js` for vanilla JavaScript usage
 - ✅ All documentation examples verified and fixed (Button, Card, Input, Toast, Dialog)
 - ✅ Fixed data attribute inconsistencies (`data-part` vs `data-slot`)
@@ -466,6 +473,7 @@ Following [Semantic Versioning](https://semver.org/):
 ### Package Configuration
 
 The package uses a dual-name strategy:
+
 - **Workspace name**: `@prism-ui/react` (for local development)
 - **Published name**: `prism-ui-headless-react` (on npm)
 
