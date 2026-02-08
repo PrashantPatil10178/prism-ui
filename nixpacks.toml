@@ -1,0 +1,25 @@
+# Nixpacks configuration for Prism UI Monorepo
+# Deployment target: Coolify (Static Site)
+# Set APP_NAME environment variable to "docs" or "demo" in Coolify
+
+[phases.setup]
+nixPkgs = ["nodejs-18_x", "pnpm"]
+
+[phases.install]
+cmds = [
+  "corepack enable",
+  "corepack prepare pnpm@9.0.0 --activate",
+  "pnpm install --frozen-lockfile"
+]
+
+[phases.build]
+cmds = [
+  "pnpm --filter=${APP_NAME:-docs} build"
+]
+
+[start]
+cmd = "echo 'Static site build complete'"
+
+[variables]
+NODE_ENV = "production"
+APP_NAME = "docs"
