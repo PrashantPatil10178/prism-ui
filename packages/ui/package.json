@@ -1,6 +1,6 @@
 {
-  "name": "@prism-ui/react",
-  "version": "1.0.0",
+  "name": "prism-ui-headless-react",
+  "version": "1.3.0",
   "description": "Production-ready headless React components with zero visual opinions and exceptional accessibility",
   "keywords": [
     "react",
@@ -9,29 +9,38 @@
     "components",
     "accessible",
     "typescript",
-    "a11y"
+    "a11y",
+    "cdn",
+    "css"
   ],
   "author": "Prism UI Team",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/prism-ui/react"
+    "url": "https://github.com/PrashantPatil10178/prism-ui"
   },
-  "homepage": "https://github.com/prism-ui/react#readme",
+  "homepage": "https://github.com/PrashantPatil10178/prism-ui#readme",
   "bugs": {
-    "url": "https://github.com/prism-ui/react/issues"
+    "url": "https://github.com/PrashantPatil10178/prism-ui/issues"
   },
   "private": false,
   "sideEffects": false,
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "unpkg": "dist/index.global.js",
+  "jsdelivr": "dist/index.global.js",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
-    }
+    },
+    "./styles": "./dist/prism-ui.css",
+    "./prism-ui.css": "./dist/prism-ui.css",
+    "./prism-ui.js": "./dist/prism-ui.js",
+    "./toast-vanilla.css": "./dist/toast-vanilla.css",
+    "./toast-vanilla.js": "./dist/toast-vanilla.js"
   },
   "files": [
     "dist",

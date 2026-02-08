@@ -66,7 +66,7 @@ function ToastDemo() {
 }
 
 export default function ToastDocs() {
-  const reactPreviewCode = `import { ToastProvider, useToast, Toaster } from '@prism-ui/react';
+  const npmCode = `import { ToastProvider, useToast, Toaster } from 'prism-ui-headless-react';
 
 function App() {
   return (
@@ -91,11 +91,50 @@ function YourComponent() {
   );
 }`;
 
+  const cdnCode = `<!-- No framework needed! Just HTML + CSS + JS -->
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">
+<script src="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.js"></script>
+
+<!-- Trigger toasts with PrismUI.toast() or shortcuts -->
+<button data-component="button" data-variant="primary"
+  onclick="PrismUI.success('Success!', 'Your changes have been saved.')">
+  Show Success
+</button>
+
+<button data-component="button" data-variant="destructive"
+  onclick="PrismUI.error('Error', 'Something went wrong.')">
+  Show Error
+</button>
+
+<button data-component="button" data-variant="outline"
+  onclick="PrismUI.info('Info', 'This is informational.')">
+  Show Info
+</button>
+
+<button data-component="button" data-variant="outline"
+  onclick="PrismUI.warning('Warning', 'Please review your settings.')">
+  Show Warning
+</button>
+
+<!-- Advanced: toast with action button -->
+<script>
+  PrismUI.toast({
+    title: 'New update available',
+    description: 'Version 2.0 is ready to install.',
+    type: 'info',
+    duration: 0,          // 0 = stays until dismissed
+    action: 'Update Now',
+    onAction: () => console.log('Updating...')
+  });
+</script>`;
+
+  const reactPreviewCode = npmCode;
+
   const vanillaPreviewCode = `<!DOCTYPE html>
 <html>
 <head>
-  <script src="https://unpkg.com/@prism-ui/react@latest/dist/toast-vanilla.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/@prism-ui/react@latest/dist/toast-vanilla.css">
+  <script src="https://unpkg.com/prism-ui-headless-react@latest/dist/toast-vanilla.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/toast-vanilla.css">
 </head>
 <body>
   <button onclick="showToast()">Show Toast</button>
@@ -133,7 +172,8 @@ function YourComponent() {
             <ToastProvider>
               <ComponentPreview
                 tabs={[
-                  { label: "Code", language: "tsx", code: reactPreviewCode },
+                  { label: "NPM", language: "tsx", code: npmCode },
+                  { label: "CDN", language: "html", code: cdnCode },
                 ]}
               >
                 <ToastDemo />
@@ -144,16 +184,25 @@ function YourComponent() {
 
           <section className="section">
             <h2>Installation</h2>
+            <h3>Via NPM</h3>
             <CodeBlock
               language="bash"
               code={`# npm
-npm install @prism-ui/react
+npm install prism-ui-headless-react
 
 # pnpm
-pnpm add @prism-ui/react
+pnpm add prism-ui-headless-react
 
 # yarn
-yarn add @prism-ui/react`}
+yarn add prism-ui-headless-react`}
+            />
+
+            <h3>Via CDN (Framework-Agnostic)</h3>
+            <CodeBlock
+              language="html"
+              code={`<!-- Just CSS + JS — works with any framework or plain HTML -->
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">
+<script src="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.js"></script>`}
             />
           </section>
 
@@ -166,7 +215,7 @@ yarn add @prism-ui/react`}
             </p>
             <CodeBlock
               language="tsx"
-              code={`import { ToastProvider, Toaster } from '@prism-ui/react';
+              code={`import { ToastProvider, Toaster } from 'prism-ui-headless-react';
 
 function App() {
   return (
@@ -182,7 +231,7 @@ function App() {
             <p>Use the useToast hook to show notifications:</p>
             <CodeBlock
               language="tsx"
-              code={`import { useToast } from '@prism-ui/react';
+              code={`import { useToast } from 'prism-ui-headless-react';
 
 function MyComponent() {
   const { addToast } = useToast();
@@ -540,10 +589,10 @@ addToast({
             <CodeBlock
               language="html"
               code={`<!-- Include the script -->
-<script src="https://unpkg.com/@prism-ui/react@latest/dist/toast-vanilla.js"></script>
+<script src="https://unpkg.com/prism-ui-headless-react@latest/dist/toast-vanilla.js"><\/script>
 
 <!-- Include the styles -->
-<link rel="stylesheet" href="https://unpkg.com/@prism-ui/react@latest/dist/toast-vanilla.css">`}
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/toast-vanilla.css"}`}
             />
           </section>
 
@@ -558,8 +607,8 @@ addToast({
               code={`<!DOCTYPE html>
 <html>
 <head>
-  <script src="https://unpkg.com/@prism-ui/react@latest/dist/toast-vanilla.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/@prism-ui/react@latest/dist/toast-vanilla.css">
+  <script src="https://unpkg.com/prism-ui-headless-react@latest/dist/toast-vanilla.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/toast-vanilla.css">
 </head>
 <body>
   <button onclick="showToast()">Show Toast</button>

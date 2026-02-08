@@ -1,9 +1,9 @@
-import { Button } from "@prism-ui/react";
+import { Button, ToastProvider, useToast, Toaster } from "@prism-ui/react";
 import DocSection from "../components/DocSection";
 import ComponentPreview from "../components/ComponentPreview";
 import CodeBlock from "../components/CodeBlock";
 
-const reactCode = `import { Button } from "@prism-ui/react";
+const npmCode = `import { Button } from "prism-ui-headless-react";
 
 export function ButtonDemo() {
   return (
@@ -12,6 +12,34 @@ export function ButtonDemo() {
     </Button>
   );
 }`;
+
+const cdnCode = `<!-- No framework needed! Just HTML + CSS + JS -->
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">
+
+<!-- All button variants, just with data attributes -->
+<button data-component="button" data-variant="primary" data-size="md"
+  onclick="alert('Clicked!')">
+  Click me
+</button>
+
+<button data-component="button" data-variant="secondary" data-size="md">
+  Secondary
+</button>
+
+<button data-component="button" data-variant="destructive" data-size="lg">
+  Delete
+</button>
+
+<button data-component="button" data-variant="outline" data-size="sm">
+  Outline
+</button>
+
+<!-- Disabled state -->
+<button data-component="button" data-variant="primary" disabled>
+  Disabled
+</button>`;
+
+const reactCode = npmCode;
 
 const htmlCode = `<!-- Prism UI renders a <button> with data attributes -->
 <button
@@ -55,6 +83,26 @@ const sizesCode = `<Button size="sm">Small</Button>
 const loadingCode = `<Button loading>Saving...</Button>
 <Button disabled>Unavailable</Button>`;
 
+function ButtonWithToast() {
+  const { addToast } = useToast();
+  return (
+    <Button
+      className="demo-button"
+      variant="primary"
+      onClick={() =>
+        addToast({
+          title: "Button clicked!",
+          description: "This toast was triggered by the button.",
+          type: "success",
+          duration: 3000,
+        })
+      }
+    >
+      Click me
+    </Button>
+  );
+}
+
 export default function ButtonDocs() {
   return (
     <DocSection>
@@ -68,11 +116,15 @@ export default function ButtonDocs() {
       <h2>Preview</h2>
       <ComponentPreview
         tabs={[
-          { label: "React", code: reactCode },
+          { label: "NPM", code: npmCode },
+          { label: "CDN", code: cdnCode, language: "html" },
           { label: "HTML", code: htmlCode, language: "html" },
         ]}
       >
-        <Button className="demo-button">Click me</Button>
+        <ToastProvider>
+          <ButtonWithToast />
+          <Toaster className="toaster-container" />
+        </ToastProvider>
         <Button className="demo-button" loading>
           Saving...
         </Button>
@@ -138,7 +190,15 @@ export default function ButtonDocs() {
       </ComponentPreview>
 
       <h2>Installation</h2>
-      <CodeBlock language="bash" code="pnpm add @prism-ui/react" />
+      <h3>Via NPM</h3>
+      <CodeBlock language="bash" code="pnpm add prism-ui-headless-react" />
+      <h3>Via CDN (Framework-Agnostic)</h3>
+      <CodeBlock
+        language="html"
+        code={`<!-- Just CSS + JS — works with any framework or plain HTML -->
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">
+<script src="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.js"></script>`}
+      />
 
       <h2>API Reference</h2>
       <table className="api-table">

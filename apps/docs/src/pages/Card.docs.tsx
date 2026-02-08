@@ -9,7 +9,7 @@ import DocSection from "../components/DocSection";
 import ComponentPreview from "../components/ComponentPreview";
 import CodeBlock from "../components/CodeBlock";
 
-const reactCode = `import { Card, CardBody, CardFooter, CardHeader } from "@prism-ui/react";
+const npmCode = `import { Card, CardBody, CardFooter, CardHeader } from "prism-ui-headless-react";
 
 export function CardDemo() {
   return (
@@ -23,11 +23,31 @@ export function CardDemo() {
   );
 }`;
 
+const cdnCode = `<!-- No framework needed! Just HTML + CSS -->
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">
+
+<div data-component="card">
+  <div data-part="card-header">
+    <h3 data-part="card-title">Notifications</h3>
+    <p data-part="card-description">You have 3 unread messages.</p>
+  </div>
+  <div data-part="card-content">
+    Review your messages to stay up to date with your team.
+  </div>
+  <div data-part="card-footer">
+    <button data-component="button" data-variant="primary" data-size="sm">
+      Mark all as read
+    </button>
+  </div>
+</div>`;
+
+const reactCode = npmCode;
+
 const htmlCode = `<!-- Prism UI renders semantic <div> elements with data attributes -->
 <div data-component="card" class="card">
-  <div data-slot="header">Notifications</div>
-  <div data-slot="body">You have 3 unread messages.</div>
-  <div data-slot="footer">
+  <div data-part="card-header">Notifications</div>
+  <div data-part="card-content">You have 3 unread messages.</div>
+  <div data-part="card-footer">
     <button>Mark all as read</button>
   </div>
 </div>
@@ -39,9 +59,9 @@ const htmlCode = `<!-- Prism UI renders semantic <div> elements with data attrib
     padding: 16px;
     background: #0a0a0c;
   }
-  .card [data-slot="header"] { font-weight: 600; margin-bottom: 8px; }
-  .card [data-slot="body"] { color: #a1a1aa; }
-  .card [data-slot="footer"] { margin-top: 12px; }
+  .card [data-part="card-header"] { font-weight: 600; margin-bottom: 8px; }
+  .card [data-part="card-content"] { color: #a1a1aa; }
+  .card [data-part="card-footer"] { margin-top: 12px; }
 </style>`;
 
 export default function CardDocs() {
@@ -50,14 +70,15 @@ export default function CardDocs() {
       <h1>Card</h1>
       <p>
         A structural container for grouping related content. Compose with
-        header, body, and footer subcomponents — each exposing data-slot
+        header, body, and footer subcomponents — each exposing data-part
         attributes for CSS targeting.
       </p>
 
       <h2>Preview</h2>
       <ComponentPreview
         tabs={[
-          { label: "React", code: reactCode },
+          { label: "NPM", code: npmCode },
+          { label: "CDN", code: cdnCode, language: "html" },
           { label: "HTML", code: htmlCode, language: "html" },
         ]}
       >
@@ -73,7 +94,14 @@ export default function CardDocs() {
       </ComponentPreview>
 
       <h2>Installation</h2>
-      <CodeBlock language="bash" code="pnpm add @prism-ui/react" />
+      <h3>Via NPM</h3>
+      <CodeBlock language="bash" code="pnpm add prism-ui-headless-react" />
+      <h3>Via CDN (Framework-Agnostic)</h3>
+      <CodeBlock
+        language="html"
+        code={`<!-- Just CSS — works with any framework or plain HTML -->
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">`}
+      />
 
       <h2>Composition</h2>
       <p>
@@ -106,7 +134,7 @@ export default function CardDocs() {
               <code>CardHeader</code>
             </td>
             <td>
-              <code>data-slot="header"</code>
+              <code>data-part="card-header"</code>
             </td>
             <td>Title or header section.</td>
           </tr>
@@ -115,7 +143,7 @@ export default function CardDocs() {
               <code>CardBody</code>
             </td>
             <td>
-              <code>data-slot="body"</code>
+              <code>data-part="card-content"</code>
             </td>
             <td>Main content area.</td>
           </tr>
@@ -124,7 +152,7 @@ export default function CardDocs() {
               <code>CardFooter</code>
             </td>
             <td>
-              <code>data-slot="footer"</code>
+              <code>data-part="card-footer"</code>
             </td>
             <td>Actions or footer area.</td>
           </tr>

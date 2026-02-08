@@ -52,7 +52,7 @@ export interface CardHeaderProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
   ({ children, className, ...props }, ref) => (
-    <div ref={ref} className={className} data-part="header" {...props}>
+    <div ref={ref} className={className} data-part="card-header" {...props}>
       {children}
     </div>
   ),
@@ -68,7 +68,7 @@ export interface CardBodyProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CardBody = forwardRef<HTMLDivElement, CardBodyProps>(
   ({ children, className, ...props }, ref) => (
-    <div ref={ref} className={className} data-part="body" {...props}>
+    <div ref={ref} className={className} data-part="card-content" {...props}>
       {children}
     </div>
   ),
@@ -84,7 +84,7 @@ export interface CardFooterProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
   ({ children, className, ...props }, ref) => (
-    <div ref={ref} className={className} data-part="footer" {...props}>
+    <div ref={ref} className={className} data-part="card-footer" {...props}>
       {children}
     </div>
   ),

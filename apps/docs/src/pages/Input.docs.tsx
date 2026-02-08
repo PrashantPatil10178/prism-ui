@@ -3,7 +3,7 @@ import DocSection from "../components/DocSection";
 import ComponentPreview from "../components/ComponentPreview";
 import CodeBlock from "../components/CodeBlock";
 
-const reactCode = `import { Input } from "@prism-ui/react";
+const npmCode = `import { Input } from "prism-ui-headless-react";
 
 export function InputDemo() {
   return (
@@ -17,17 +17,55 @@ export function InputDemo() {
   );
 }`;
 
+const cdnCode = `<!-- No framework needed! Just HTML + CSS -->
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">
+
+<div data-component="input-wrapper">
+  <label data-component="input-label" for="email">Email</label>
+  <input
+    data-component="input"
+    id="email"
+    type="email"
+    placeholder="you@example.com"
+    aria-describedby="email-hint"
+  />
+  <p data-component="input-hint" id="email-hint">
+    We'll never share your email.
+  </p>
+</div>
+
+<!-- Error state example -->
+<div data-component="input-wrapper">
+  <label data-component="input-label" data-required="true" for="password">
+    Password
+  </label>
+  <input
+    data-component="input"
+    data-error="true"
+    id="password"
+    type="password"
+    placeholder="Enter your password"
+    aria-invalid="true"
+    aria-describedby="password-error"
+  />
+  <p data-component="input-error" id="password-error">
+    Password must be at least 8 characters
+  </p>
+</div>`;
+
+const reactCode = npmCode;
+
 const htmlCode = `<!-- Prism UI renders a labeled input with ARIA wiring -->
 <div data-component="input" class="field">
-  <label for="email" data-slot="label">Email</label>
+  <label for="email" data-part="label">Email</label>
   <input
     id="email"
     type="email"
     placeholder="you@example.com"
     aria-describedby="email-helper"
-    data-slot="control"
+    data-part="control"
   />
-  <p id="email-helper" data-slot="helper">
+  <p id="email-helper" data-part="helper">
     We'll never share your email.
   </p>
 </div>
@@ -46,9 +84,9 @@ const htmlCode = `<!-- Prism UI renders a labeled input with ARIA wiring -->
     border-color: #d4d4d8;
     box-shadow: 0 0 0 2px rgba(212,212,216,0.1);
   }
-  .field [data-slot="label"] { font-weight: 500; }
-  .field [data-slot="helper"] { font-size: 0.85rem; color: #a1a1aa; }
-  .field [data-slot="error"] { font-size: 0.85rem; color: #ef4444; }
+  .field [data-part="label"] { font-weight: 500; }
+  .field [data-part="helper"] { font-size: 0.85rem; color: #a1a1aa; }
+  .field [data-part="error"] { font-size: 0.85rem; color: #ef4444; }
 </style>`;
 
 const errorCode = `<Input
@@ -72,7 +110,8 @@ export default function InputDocs() {
       <h2>Preview</h2>
       <ComponentPreview
         tabs={[
-          { label: "React", code: reactCode },
+          { label: "NPM", code: npmCode },
+          { label: "CDN", code: cdnCode, language: "html" },
           { label: "HTML", code: htmlCode, language: "html" },
         ]}
       >
@@ -102,7 +141,14 @@ export default function InputDocs() {
       </ComponentPreview>
 
       <h2>Installation</h2>
-      <CodeBlock language="bash" code="pnpm add @prism-ui/react" />
+      <h3>Via NPM</h3>
+      <CodeBlock language="bash" code="pnpm add prism-ui-headless-react" />
+      <h3>Via CDN (Framework-Agnostic)</h3>
+      <CodeBlock
+        language="html"
+        code={`<!-- Just CSS — works with any framework or plain HTML -->
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">`}
+      />
 
       <h2>API Reference</h2>
       <table className="api-table">
@@ -177,7 +223,7 @@ export default function InputDocs() {
               <code>InputLabel</code>
             </td>
             <td>
-              <code>data-slot="label"</code>
+              <code>data-part="label"</code>
             </td>
             <td>The label element.</td>
           </tr>
@@ -186,7 +232,7 @@ export default function InputDocs() {
               <code>InputControl</code>
             </td>
             <td>
-              <code>data-slot="control"</code>
+              <code>data-part="control"</code>
             </td>
             <td>The input element.</td>
           </tr>
@@ -195,7 +241,7 @@ export default function InputDocs() {
               <code>InputHelperText</code>
             </td>
             <td>
-              <code>data-slot="helper"</code>
+              <code>data-part="helper"</code>
             </td>
             <td>Helper text below input.</td>
           </tr>
@@ -204,7 +250,7 @@ export default function InputDocs() {
               <code>InputError</code>
             </td>
             <td>
-              <code>data-slot="error"</code>
+              <code>data-part="error"</code>
             </td>
             <td>Error text with aria-live.</td>
           </tr>

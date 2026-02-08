@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prism UI - CDN Usage Example</title>
+
+    <!-- Prism UI CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 40px;
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background: #f9fafb;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .section {
+        background: white;
+        border-radius: 12px;
+        padding: 32px;
+        margin-bottom: 24px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #111827;
+        margin-bottom: 8px;
+      }
+      h2 {
+        color: #374151;
+        margin-top: 0;
+        margin-bottom: 24px;
+        font-size: 1.5rem;
+      }
+      .subtitle {
+        color: #6b7280;
+        margin-bottom: 32px;
+      }
+      .demo-grid {
+        display: grid;
+        gap: 16px;
+        margin-top: 24px;
+      }
+      .demo-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎨 Prism UI - Headless React Components</h1>
+      <p class="subtitle">Production-ready components for React via CDN</p>
+
+      <!-- Button Examples -->
+      <div class="section">
+        <h2>Buttons</h2>
+        <div class="demo-row">
+          <button data-component="button" data-variant="primary">
+            Primary
+          </button>
+          <button data-component="button" data-variant="secondary">
+            Secondary
+          </button>
+          <button data-component="button" data-variant="success">
+            Success
+          </button>
+          <button data-component="button" data-variant="destructive">
+            Destructive
+          </button>
+          <button data-component="button" data-variant="outline">
+            Outline
+          </button>
+          <button data-component="button" data-variant="ghost">Ghost</button>
+          <button data-component="button" data-variant="link">Link</button>
+        </div>
+
+        <div class="demo-row" style="margin-top: 16px">
+          <button data-component="button" data-variant="primary" data-size="sm">
+            Small
+          </button>
+          <button data-component="button" data-variant="primary" data-size="md">
+            Medium
+          </button>
+          <button data-component="button" data-variant="primary" data-size="lg">
+            Large
+          </button>
+          <button data-component="button" data-variant="primary" disabled>
+            Disabled
+          </button>
+        </div>
+      </div>
+
+      <!-- Card Examples -->
+      <div class="section">
+        <h2>Cards</h2>
+        <div class="demo-grid">
+          <div data-component="card">
+            <div data-part="card-header">
+              <h3 data-part="card-title">Simple Card</h3>
+              <p data-part="card-description">
+                A basic card with header and content
+              </p>
+            </div>
+            <div data-part="card-content">
+              <p>
+                This is a simple card component with a clean design. Cards are
+                great for organizing content into distinct sections.
+              </p>
+            </div>
+            <div data-part="card-footer">
+              <button
+                data-component="button"
+                data-variant="primary"
+                data-size="sm"
+              >
+                Learn More
+              </button>
+            </div>
+          </div>
+
+          <div data-component="card" data-interactive="true">
+            <div data-part="card-header">
+              <h3 data-part="card-title">Interactive Card</h3>
+              <p data-part="card-description">Click me! I have hover effects</p>
+            </div>
+            <div data-part="card-content">
+              <p>
+                This card is interactive and responds to user interactions with
+                smooth hover animations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Examples -->
+      <div class="section">
+        <h2>Inputs</h2>
+        <div class="demo-grid" style="max-width: 500px">
+          <div data-component="input-wrapper">
+            <label data-component="input-label">Email Address</label>
+            <input
+              data-component="input"
+              type="email"
+              placeholder="Enter your email"
+            />
+            <span data-component="input-hint"
+              >We'll never share your email</span
+            >
+          </div>
+
+          <div data-component="input-wrapper">
+            <label data-component="input-label" data-required="true"
+              >Password</label
+            >
+            <input
+              data-component="input"
+              type="password"
+              placeholder="Enter password"
+            />
+          </div>
+
+          <div data-component="input-wrapper">
+            <label data-component="input-label">Username (Error State)</label>
+            <input
+              data-component="input"
+              data-error="true"
+              type="text"
+              placeholder="Enter username"
+              value="ab"
+            />
+            <span data-component="input-error"
+              >Username must be at least 3 characters</span
+            >
+          </div>
+
+          <div data-component="input-wrapper">
+            <label data-component="input-label">Disabled Input</label>
+            <input
+              data-component="input"
+              type="text"
+              placeholder="Cannot edit"
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs Example (Pure HTML) -->
+      <div class="section">
+        <h2>Tabs (Static HTML)</h2>
+        <div data-component="tabs">
+          <div data-component="tabs-list" role="tablist">
+            <button
+              data-component="tabs-trigger"
+              data-state="active"
+              role="tab"
+              onclick="switchTab(event, 'tab1')"
+            >
+              Overview
+            </button>
+            <button
+              data-component="tabs-trigger"
+              role="tab"
+              onclick="switchTab(event, 'tab2')"
+            >
+              Features
+            </button>
+            <button
+              data-component="tabs-trigger"
+              role="tab"
+              onclick="switchTab(event, 'tab3')"
+            >
+              Pricing
+            </button>
+          </div>
+
+          <div id="tab1" data-component="tabs-content" data-state="active">
+            <h3>Overview</h3>
+            <p>
+              Welcome to Prism UI! This is a headless component library that
+              gives you full control over styling.
+            </p>
+          </div>
+
+          <div id="tab2" data-component="tabs-content" data-state="inactive">
+            <h3>Features</h3>
+            <ul>
+              <li>Fully accessible components</li>
+              <li>TypeScript support</li>
+              <li>Minimal bundle size</li>
+              <li>CDN ready</li>
+            </ul>
+          </div>
+
+          <div id="tab3" data-component="tabs-content" data-state="inactive">
+            <h3>Pricing</h3>
+            <p>
+              Prism UI is completely free and open source! Use it in any
+              project, commercial or personal.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toast Demo -->
+      <div class="section">
+        <h2>Toast Notifications</h2>
+        <p style="margin-bottom: 16px; color: #6b7280">
+          Click buttons to show toast notifications
+        </p>
+        <div class="demo-row">
+          <button
+            data-component="button"
+            data-variant="success"
+            onclick="showToast('success')"
+          >
+            Show Success
+          </button>
+          <button
+            data-component="button"
+            data-variant="destructive"
+            onclick="showToast('error')"
+          >
+            Show Error
+          </button>
+          <button
+            data-component="button"
+            data-variant="primary"
+            onclick="showToast('info')"
+          >
+            Show Info
+          </button>
+          <button
+            data-component="button"
+            data-variant="secondary"
+            onclick="showToast('warning')"
+          >
+            Show Warning
+          </button>
+        </div>
+      </div>
+
+      <!-- Dialog Demo -->
+      <div class="section">
+        <h2>Dialog (Modal)</h2>
+        <button
+          data-component="button"
+          data-variant="primary"
+          onclick="openDialog()"
+        >
+          Open Dialog
+        </button>
+      </div>
+
+      <!-- Usage Instructions -->
+      <div class="section">
+        <h2>📦 CDN Usage</h2>
+        <pre
+          style="
+            background: #f3f4f6;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+          "
+        ><code>&lt;!-- Include CSS --&gt;
+&lt;link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css"&gt;
+
+&lt;!-- For React components via CDN --&gt;
+&lt;script crossorigin src="https://unpkg.com/react@19/umd/react.production.min.js"&gt;&lt;/script&gt;
+&lt;script crossorigin src="https://unpkg.com/react-dom@19/umd/react-dom.production.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://unpkg.com/prism-ui-headless-react@latest/dist/index.global.js"&gt;&lt;/script&gt;</code></pre>
+
+        <h3 style="margin-top: 24px">NPM Installation</h3>
+        <pre
+          style="
+            background: #f3f4f6;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+          "
+        ><code>npm install prism-ui-headless-react
+# or
+pnpm add prism-ui-headless-react
+# or
+yarn add prism-ui-headless-react</code></pre>
+
+        <h3 style="margin-top: 24px">Import in React</h3>
+        <pre
+          style="
+            background: #f3f4f6;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+          "
+        ><code>import { Button, Card, Input, Tabs, Toast, Dialog } from 'prism-ui-headless-react';
+import 'prism-ui-headless-react/prism-ui.css';</code></pre>
+      </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div data-component="toast-container" id="toast-container"></div>
+
+    <!-- Dialog (Hidden by default) -->
+    <div id="dialog" style="display: none">
+      <div data-component="dialog-overlay" onclick="closeDialog()"></div>
+      <div data-component="dialog-content">
+        <button data-part="dialog-close" onclick="closeDialog()">✕</button>
+        <div data-part="dialog-header">
+          <h3 data-part="dialog-title">Welcome to Prism UI</h3>
+          <p data-part="dialog-description">
+            This is a fully accessible dialog component
+          </p>
+        </div>
+        <div data-part="dialog-body">
+          <p>
+            Dialogs are great for capturing user attention and requiring an
+            action before proceeding. This dialog is built with accessibility in
+            mind.
+          </p>
+          <div data-component="input-wrapper" style="margin-top: 16px">
+            <label data-component="input-label">Your Name</label>
+            <input
+              data-component="input"
+              type="text"
+              placeholder="Enter your name"
+            />
+          </div>
+        </div>
+        <div data-part="dialog-footer">
+          <button
+            data-component="button"
+            data-variant="outline"
+            onclick="closeDialog()"
+          >
+            Cancel
+          </button>
+          <button
+            data-component="button"
+            data-variant="primary"
+            onclick="closeDialog()"
+          >
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Tab switching functionality
+      function switchTab(event, tabId) {
+        // Remove active state from all triggers
+        const triggers = document.querySelectorAll(
+          '[data-component="tabs-trigger"]',
+        );
+        triggers.forEach((trigger) => {
+          trigger.setAttribute("data-state", "");
+        });
+
+        // Add active state to clicked trigger
+        event.target.setAttribute("data-state", "active");
+
+        // Hide all content
+        const contents = document.querySelectorAll(
+          '[data-component="tabs-content"]',
+        );
+        contents.forEach((content) => {
+          content.setAttribute("data-state", "inactive");
+        });
+
+        // Show selected content
+        document.getElementById(tabId).setAttribute("data-state", "active");
+      }
+
+      // Toast functionality
+      let toastCounter = 0;
+      function showToast(type) {
+        const container = document.getElementById("toast-container");
+        const toastId = `toast-${toastCounter++}`;
+
+        const messages = {
+          success: {
+            title: "Success!",
+            description: "Your operation completed successfully.",
+          },
+          error: {
+            title: "Error",
+            description: "Something went wrong. Please try again.",
+          },
+          info: {
+            title: "Information",
+            description: "Here is some useful information for you.",
+          },
+          warning: {
+            title: "Warning",
+            description: "Please review this before proceeding.",
+          },
+        };
+
+        const msg = messages[type];
+
+        const toast = document.createElement("div");
+        toast.id = toastId;
+        toast.setAttribute("data-component", "toast");
+        toast.setAttribute("data-type", type);
+        toast.innerHTML = `
+        <button data-part="toast-close" onclick="removeToast('${toastId}')">✕</button>
+        <div data-part="toast-content">
+          <div data-part="toast-title">${msg.title}</div>
+          <div data-part="toast-description">${msg.description}</div>
+        </div>
+      `;
+
+        container.appendChild(toast);
+
+        // Auto remove after 5 seconds
+        setTimeout(() => removeToast(toastId), 5000);
+      }
+
+      function removeToast(toastId) {
+        const toast = document.getElementById(toastId);
+        if (toast) {
+          toast.style.animation = "toastSlideOut 0.2s ease";
+          setTimeout(() => toast.remove(), 200);
+        }
+      }
+
+      // Dialog functionality
+      function openDialog() {
+        document.getElementById("dialog").style.display = "block";
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeDialog() {
+        document.getElementById("dialog").style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+
+      // Close dialog on Escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeDialog();
+      });
+    </script>
+  </body>
+</html>

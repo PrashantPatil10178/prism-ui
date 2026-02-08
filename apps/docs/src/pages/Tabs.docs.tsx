@@ -3,7 +3,7 @@ import DocSection from "../components/DocSection";
 import ComponentPreview from "../components/ComponentPreview";
 import CodeBlock from "../components/CodeBlock";
 
-const reactCode = `import { Tabs, TabsList, TabsTrigger, TabsPanel } from "@prism-ui/react";
+const npmCode = `import { Tabs, TabsList, TabsTrigger, TabsPanel } from "prism-ui-headless-react";
 
 export function TabsDemo() {
   return (
@@ -25,6 +25,39 @@ export function TabsDemo() {
     </Tabs>
   );
 }`;
+
+const cdnCode = `<!-- No framework needed! Just HTML + CSS + JS -->
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">
+<script src="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.js"></script>
+
+<!-- Tabs: data-default sets the initially active tab -->
+<div data-component="tabs" data-default="account">
+  <div data-component="tabs-list">
+    <button data-component="tabs-trigger" data-value="account">
+      Account
+    </button>
+    <button data-component="tabs-trigger" data-value="password">
+      Password
+    </button>
+    <button data-component="tabs-trigger" data-value="settings">
+      Settings
+    </button>
+  </div>
+  <div data-component="tabs-content" data-value="account">
+    <p>Make changes to your account here.</p>
+  </div>
+  <div data-component="tabs-content" data-value="password">
+    <p>Change your password here.</p>
+  </div>
+  <div data-component="tabs-content" data-value="settings">
+    <p>Manage your notification preferences.</p>
+  </div>
+</div>
+
+<!-- That's it! PrismUI.js auto-wires tab switching,
+     keyboard navigation, and ARIA attributes. -->`;
+
+const reactCode = npmCode;
 
 const htmlCode = `<!-- Prism UI renders role="tablist", role="tab", role="tabpanel" -->
 <div data-component="tabs">
@@ -84,7 +117,8 @@ export default function TabsDocs() {
       <h2>Preview</h2>
       <ComponentPreview
         tabs={[
-          { label: "React", code: reactCode },
+          { label: "NPM", code: npmCode },
+          { label: "CDN", code: cdnCode, language: "html" },
           { label: "HTML", code: htmlCode, language: "html" },
         ]}
       >
@@ -116,7 +150,15 @@ export default function TabsDocs() {
       </ComponentPreview>
 
       <h2>Installation</h2>
-      <CodeBlock language="bash" code="pnpm add @prism-ui/react" />
+      <h3>Via NPM</h3>
+      <CodeBlock language="bash" code="pnpm add prism-ui-headless-react" />
+      <h3>Via CDN (Framework-Agnostic)</h3>
+      <CodeBlock
+        language="html"
+        code={`<!-- Just CSS + JS — works with any framework or plain HTML -->
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">
+<script src="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.js"></script>`}
+      />
 
       <h2>API Reference</h2>
       <table className="api-table">

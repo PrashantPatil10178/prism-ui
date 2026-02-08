@@ -12,11 +12,11 @@ import DocSection from "../components/DocSection";
 import ComponentPreview from "../components/ComponentPreview";
 import CodeBlock from "../components/CodeBlock";
 
-const reactCode = `import { useState } from "react";
+const npmCode = `import { useState } from "react";
 import {
   Dialog, DialogTrigger, DialogContent,
   DialogTitle, DialogDescription, DialogClose,
-} from "@prism-ui/react";
+} from "prism-ui-headless-react";
 
 export function DialogDemo() {
   const [open, setOpen] = useState(false);
@@ -34,6 +34,40 @@ export function DialogDemo() {
     </Dialog>
   );
 }`;
+
+const cdnCode = `<!-- No framework needed! Just HTML + CSS + JS -->
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">
+<script src="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.js"></script>
+
+<!-- Trigger button: data-dialog-trigger points to dialog id -->
+<button data-component="button" data-variant="primary"
+  data-dialog-trigger="confirm-dialog">
+  Open Dialog
+</button>
+
+<!-- Dialog: hidden by default, opened via PrismUI.openDialog() -->
+<div id="confirm-dialog" data-component="dialog-content" data-state="closed">
+  <div data-part="dialog-header">
+    <h2 data-part="dialog-title">Are you absolutely sure?</h2>
+    <p data-part="dialog-description">
+      This action cannot be undone.
+    </p>
+  </div>
+  <div data-part="dialog-body">
+    This will permanently delete your account.
+  </div>
+  <div data-part="dialog-footer">
+    <button data-component="button" data-variant="outline"
+      data-dialog-close="confirm-dialog">Cancel</button>
+    <button data-component="button" data-variant="destructive"
+      data-dialog-close="confirm-dialog">Delete</button>
+  </div>
+</div>
+
+<!-- That's it! PrismUI.js auto-wires open/close, backdrop,
+     focus trap, and Escape key handling. -->`;
+
+const reactCode = npmCode;
 
 const htmlCode = `<!-- Prism UI uses the native <dialog> element -->
 <button onclick="document.querySelector('#my-dialog').showModal()">
@@ -68,7 +102,12 @@ function DialogDemo() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger className="demo-button">Open Dialog</DialogTrigger>
+      <DialogTrigger className="demo-button" data-variant="primary">
+        Open Dialog
+      </DialogTrigger>
+      {open && (
+        <div className="demo-dialog-backdrop" onClick={() => setOpen(false)} />
+      )}
       <DialogContent className="demo-dialog">
         <DialogTitle style={{ fontSize: "1.1rem", fontWeight: 600 }}>
           Are you absolutely sure?
@@ -83,11 +122,8 @@ function DialogDemo() {
           <DialogClose className="demo-button">Cancel</DialogClose>
           <Button
             className="demo-button"
-            style={{
-              background: "#ef4444",
-              color: "#fff",
-              borderColor: "#ef4444",
-            }}
+            variant="destructive"
+            onClick={() => setOpen(false)}
           >
             Delete
           </Button>
@@ -110,7 +146,8 @@ export default function DialogDocs() {
       <h2>Preview</h2>
       <ComponentPreview
         tabs={[
-          { label: "React", code: reactCode },
+          { label: "NPM", code: npmCode },
+          { label: "CDN", code: cdnCode, language: "html" },
           { label: "HTML", code: htmlCode, language: "html" },
         ]}
       >
@@ -118,7 +155,15 @@ export default function DialogDocs() {
       </ComponentPreview>
 
       <h2>Installation</h2>
-      <CodeBlock language="bash" code="pnpm add @prism-ui/react" />
+      <h3>Via NPM</h3>
+      <CodeBlock language="bash" code="pnpm add prism-ui-headless-react" />
+      <h3>Via CDN (Framework-Agnostic)</h3>
+      <CodeBlock
+        language="html"
+        code={`<!-- Just CSS + JS — works with any framework or plain HTML -->
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">
+<script src="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.js"></script>`}
+      />
 
       <h2>API Reference</h2>
       <table className="api-table">

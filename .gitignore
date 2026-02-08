@@ -2,6 +2,12 @@
 
 # Dependencies
 node_modules
+
+# Editor and AI tools
+.agent
+.agents
+.vscode
+
 .pnp
 .pnp.js
 
@@ -36,3 +42,4 @@ yarn-error.log*
 # Misc
 .DS_Store
 *.pem
+

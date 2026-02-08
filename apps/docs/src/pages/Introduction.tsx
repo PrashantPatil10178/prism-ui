@@ -86,8 +86,9 @@ export default function Introduction() {
         </h1>
 
         <p className="landing-subtitle">
-          Beautifully accessible, headless React components. Drop into any
-          project with zero CSS opinions. You own every pixel.
+          Framework-agnostic, accessible, headless UI components. Use with
+          React, Vue, Svelte, or plain HTML. Zero CSS opinions — you own every
+          pixel.
         </p>
 
         <div className="landing-actions">
@@ -95,7 +96,7 @@ export default function Introduction() {
             Get Started
           </Link>
           <div className="landing-action-btn action-btn-dark">
-            npx @prism-ui/react init
+            pnpm add prism-ui-headless-react
           </div>
         </div>
 
@@ -109,38 +110,63 @@ export default function Introduction() {
             </div>
             <div className="terminal-body">
               <span className="t-line">
-                <span className="t-muted">$</span> pnpm add @prism-ui/react
+                <span className="t-muted">{"// "}</span>
+                <span className="t-muted">CDN — No framework needed</span>
               </span>
               <span className="t-line">
-                <span className="t-green">✔</span> Added 1 package in 320ms
+                {"<"}
+                <span className="t-blue">link</span>{" "}
+                <span className="t-yellow">rel</span>
+                {'="stylesheet"'} <span className="t-yellow">href</span>
+                {'="...prism-ui.css"'}
+                {" />"}
               </span>
-              <span className="t-line">&nbsp;</span>
               <span className="t-line">
-                <span className="t-blue">import</span>
-                {" { Button, Card, Dialog } "}
-                <span className="t-blue">from</span>
-                {" '@prism-ui/react'"}
+                {"<"}
+                <span className="t-blue">script</span>{" "}
+                <span className="t-yellow">src</span>
+                {'="...prism-ui.js"'}
+                {">"}
+                {"</"}
+                <span className="t-blue">script</span>
+                {">"}
               </span>
               <span className="t-line">&nbsp;</span>
               <span className="t-line">
                 <span className="t-muted">{"// "}</span>
-                <span className="t-muted">Zero CSS. Full control.</span>
+                <span className="t-muted">Just HTML + data attributes</span>
               </span>
               <span className="t-line">
                 {"<"}
-                <span className="t-blue">Button</span>{" "}
-                <span className="t-yellow">variant</span>
-                {'="primary"'} <span className="t-yellow">size</span>
+                <span className="t-blue">button</span>{" "}
+                <span className="t-yellow">data-component</span>
+                {'="button"'}
+              </span>
+              <span className="t-line">
+                {"  "}
+                <span className="t-yellow">data-variant</span>
+                {'="primary"'} <span className="t-yellow">data-size</span>
                 {'="md"'}
                 {">"}
               </span>
               <span className="t-line">{"  Ship It"}</span>
               <span className="t-line">
                 {"</"}
-                <span className="t-blue">Button</span>
+                <span className="t-blue">button</span>
                 {">"}
               </span>
               <span className="t-line">&nbsp;</span>
+              <span className="t-line">
+                <span className="t-muted">{"// "}</span>
+                <span className="t-muted">Or install via npm for React</span>
+              </span>
+              <span className="t-line">
+                <span className="t-muted">$</span> pnpm add
+                prism-ui-headless-react
+              </span>
+              <span className="t-line">
+                <span className="t-green">✔</span> Added 1 package in 320ms
+              </span>
               <span className="t-line">
                 <span className="t-muted">$</span> _
                 <span className="t-cursor" />
@@ -152,11 +178,11 @@ export default function Introduction() {
         {/* Features Grid */}
         <div className="landing-features">
           <div className="landing-feature-card">
-            <div className="landing-feature-icon">🎯</div>
-            <div className="landing-feature-title">Truly Headless</div>
+            <div className="landing-feature-icon">�</div>
+            <div className="landing-feature-title">Framework-Agnostic</div>
             <div className="landing-feature-desc">
-              Zero CSS shipped. Components expose behavior and structure — you
-              bring the design.
+              Works with React, Vue, Svelte, or plain HTML. CDN-ready with zero
+              framework dependency.
             </div>
           </div>
           <div className="landing-feature-card">
@@ -195,8 +221,8 @@ export default function Introduction() {
             <div className="landing-feature-icon">⚡</div>
             <div className="landing-feature-title">Lightweight</div>
             <div className="landing-feature-desc">
-              Zero runtime dependencies. Only React as a peer dependency.
-              Production-ready.
+              Zero runtime dependencies for CDN. Optional React bindings for
+              React projects. Production-ready.
             </div>
           </div>
         </div>
