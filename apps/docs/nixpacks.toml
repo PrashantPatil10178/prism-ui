@@ -1,5 +1,6 @@
 # Nixpacks configuration for Prism UI Documentation
-# Deployment target: Coolify
+# Deployment target: Coolify (Static Site)
+# Important: Set Base Directory to "/" in Coolify, NOT "/apps/docs"
 
 [phases.setup]
 nixPkgs = ["nodejs-18_x", "pnpm"]
@@ -17,8 +18,8 @@ cmds = [
 ]
 
 [start]
-cmd = "pnpm start"
+# Static site - files served from apps/docs/dist
+cmd = "echo 'Static site build complete'"
 
 [variables]
 NODE_ENV = "production"
-PORT = "3000"
