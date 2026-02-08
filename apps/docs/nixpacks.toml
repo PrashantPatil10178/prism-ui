@@ -1,0 +1,24 @@
+# Nixpacks configuration for Prism UI Documentation
+# Deployment target: Coolify
+
+[phases.setup]
+nixPkgs = ["nodejs-18_x", "pnpm"]
+
+[phases.install]
+cmds = [
+  "corepack enable",
+  "corepack prepare pnpm@9.0.0 --activate",
+  "pnpm install --frozen-lockfile --filter=docs..."
+]
+
+[phases.build]
+cmds = [
+  "pnpm --filter=docs build"
+]
+
+[start]
+cmd = "pnpm start"
+
+[variables]
+NODE_ENV = "production"
+PORT = "3000"
