@@ -39,6 +39,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       onClick,
       variant = "primary",
       size = "md",
+      style,
       ...props
     },
     ref,
@@ -50,6 +51,22 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       onClick,
     });
 
+    const baseStyles: React.CSSProperties = {
+      display: "inline-flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "0.5rem",
+      fontFamily: "inherit",
+      fontWeight: 500,
+      borderRadius: "0.5rem",
+      border: "1px solid transparent",
+      cursor: "pointer",
+      transition: "all 0.15s ease",
+      whiteSpace: "nowrap",
+      lineHeight: 1,
+      ...style,
+    };
+
     return (
       <Component
         ref={ref}
@@ -58,6 +75,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         data-component="button"
         data-variant={variant}
         data-size={size}
+        style={baseStyles}
         {...behavior}
         {...props}
       >

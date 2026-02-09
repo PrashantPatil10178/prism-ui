@@ -24,22 +24,34 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       variant = "default",
       size = "md",
       interactive,
+      style,
       ...props
     },
     ref,
-  ) => (
-    <div
-      ref={ref}
-      className={className}
-      data-component="card"
-      data-variant={variant}
-      data-size={size}
-      data-interactive={interactive ? "true" : undefined}
-      {...props}
-    >
-      {children}
-    </div>
-  ),
+  ) => {
+    const baseStyles: React.CSSProperties = {
+      display: "flex",
+      flexDirection: "column",
+      borderRadius: "0.75rem",
+      overflow: "hidden",
+      ...style,
+    };
+
+    return (
+      <div
+        ref={ref}
+        className={className}
+        data-component="card"
+        data-variant={variant}
+        data-size={size}
+        data-interactive={interactive ? "true" : undefined}
+        style={baseStyles}
+        {...props}
+      >
+        {children}
+      </div>
+    );
+  },
 );
 
 Card.displayName = "Card";
@@ -51,11 +63,27 @@ export interface CardHeaderProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
-  ({ children, className, ...props }, ref) => (
-    <div ref={ref} className={className} data-part="card-header" {...props}>
-      {children}
-    </div>
-  ),
+  ({ children, className, style, ...props }, ref) => {
+    const baseStyles: React.CSSProperties = {
+      padding: "1.25rem 1.25rem 0",
+      fontWeight: 600,
+      fontSize: "1rem",
+      lineHeight: 1.4,
+      ...style,
+    };
+
+    return (
+      <div
+        ref={ref}
+        className={className}
+        data-part="card-header"
+        style={baseStyles}
+        {...props}
+      >
+        {children}
+      </div>
+    );
+  },
 );
 
 CardHeader.displayName = "CardHeader";
@@ -67,11 +95,26 @@ export interface CardBodyProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const CardBody = forwardRef<HTMLDivElement, CardBodyProps>(
-  ({ children, className, ...props }, ref) => (
-    <div ref={ref} className={className} data-part="card-content" {...props}>
-      {children}
-    </div>
-  ),
+  ({ children, className, style, ...props }, ref) => {
+    const baseStyles: React.CSSProperties = {
+      padding: "1rem 1.25rem",
+      lineHeight: 1.6,
+      flex: "1 1 auto",
+      ...style,
+    };
+
+    return (
+      <div
+        ref={ref}
+        className={className}
+        data-part="card-content"
+        style={baseStyles}
+        {...props}
+      >
+        {children}
+      </div>
+    );
+  },
 );
 
 CardBody.displayName = "CardBody";
@@ -83,11 +126,28 @@ export interface CardFooterProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
-  ({ children, className, ...props }, ref) => (
-    <div ref={ref} className={className} data-part="card-footer" {...props}>
-      {children}
-    </div>
-  ),
+  ({ children, className, style, ...props }, ref) => {
+    const baseStyles: React.CSSProperties = {
+      padding: "0 1.25rem 1.25rem",
+      display: "flex",
+      alignItems: "center",
+      gap: "0.5rem",
+      marginTop: "0.25rem",
+      ...style,
+    };
+
+    return (
+      <div
+        ref={ref}
+        className={className}
+        data-part="card-footer"
+        style={baseStyles}
+        {...props}
+      >
+        {children}
+      </div>
+    );
+  },
 );
 
 CardFooter.displayName = "CardFooter";

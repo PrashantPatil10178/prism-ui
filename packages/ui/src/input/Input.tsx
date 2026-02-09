@@ -27,19 +27,30 @@ export interface InputRootProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const InputRoot = forwardRef<HTMLDivElement, InputRootProps>(
-  ({ children, className, invalid, size, variant, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={className}
-      data-component="input"
-      data-invalid={invalid ? "true" : undefined}
-      data-size={size ?? undefined}
-      data-variant={variant ?? undefined}
-      {...props}
-    >
-      {children}
-    </div>
-  ),
+  ({ children, className, invalid, size, variant, style, ...props }, ref) => {
+    const baseStyles: React.CSSProperties = {
+      display: "flex",
+      flexDirection: "column",
+      gap: "0.375rem",
+      width: "100%",
+      ...style,
+    };
+
+    return (
+      <div
+        ref={ref}
+        className={className}
+        data-component="input"
+        data-invalid={invalid ? "true" : undefined}
+        data-size={size ?? undefined}
+        data-variant={variant ?? undefined}
+        style={baseStyles}
+        {...props}
+      >
+        {children}
+      </div>
+    );
+  },
 );
 
 InputRoot.displayName = "InputRoot";
@@ -56,18 +67,29 @@ export interface InputLabelProps extends HTMLAttributes<HTMLLabelElement> {
 }
 
 export const InputLabel = forwardRef<HTMLLabelElement, InputLabelProps>(
-  ({ children, className, htmlFor, required, ...props }, ref) => (
-    <label
-      ref={ref}
-      className={className}
-      htmlFor={htmlFor}
-      data-part="label"
-      data-required={required ? "true" : undefined}
-      {...props}
-    >
-      {children}
-    </label>
-  ),
+  ({ children, className, htmlFor, required, style, ...props }, ref) => {
+    const baseStyles: React.CSSProperties = {
+      fontSize: "0.875rem",
+      fontWeight: 500,
+      lineHeight: 1,
+      userSelect: "none",
+      ...style,
+    };
+
+    return (
+      <label
+        ref={ref}
+        className={className}
+        htmlFor={htmlFor}
+        data-part="label"
+        data-required={required ? "true" : undefined}
+        style={baseStyles}
+        {...props}
+      >
+        {children}
+      </label>
+    );
+  },
 );
 
 InputLabel.displayName = "InputLabel";
@@ -141,11 +163,26 @@ export interface InputHelperTextProps extends HTMLAttributes<HTMLParagraphElemen
 export const InputHelperText = forwardRef<
   HTMLParagraphElement,
   InputHelperTextProps
->(({ children, className, ...props }, ref) => (
-  <p ref={ref} className={className} data-part="helper" {...props}>
-    {children}
-  </p>
-));
+>(({ children, className, style, ...props }, ref) => {
+  const baseStyles: React.CSSProperties = {
+    fontSize: "0.8125rem",
+    lineHeight: 1.4,
+    margin: 0,
+    ...style,
+  };
+
+  return (
+    <p
+      ref={ref}
+      className={className}
+      data-part="helper"
+      style={baseStyles}
+      {...props}
+    >
+      {children}
+    </p>
+  );
+});
 
 InputHelperText.displayName = "InputHelperText";
 
@@ -158,18 +195,28 @@ export interface InputErrorProps extends HTMLAttributes<HTMLParagraphElement> {
 }
 
 export const InputError = forwardRef<HTMLParagraphElement, InputErrorProps>(
-  ({ children, className, ...props }, ref) => (
-    <p
-      ref={ref}
-      className={className}
-      data-part="error"
-      aria-live="polite"
-      role="alert"
-      {...props}
-    >
-      {children}
-    </p>
-  ),
+  ({ children, className, style, ...props }, ref) => {
+    const baseStyles: React.CSSProperties = {
+      fontSize: "0.8125rem",
+      lineHeight: 1.4,
+      margin: 0,
+      ...style,
+    };
+
+    return (
+      <p
+        ref={ref}
+        className={className}
+        data-part="error"
+        aria-live="polite"
+        role="alert"
+        style={baseStyles}
+        {...props}
+      >
+        {children}
+      </p>
+    );
+  },
 );
 
 InputError.displayName = "InputError";

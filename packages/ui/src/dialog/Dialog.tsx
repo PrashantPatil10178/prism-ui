@@ -123,8 +123,16 @@ export interface DialogTitleProps extends HTMLAttributes<HTMLHeadingElement> {
 }
 
 export const DialogTitle = forwardRef<HTMLHeadingElement, DialogTitleProps>(
-  ({ children, className, id, ...props }, ref) => {
+  ({ children, className, id, style, ...props }, ref) => {
     const { titleId } = useDialogContext();
+
+    const baseStyles: React.CSSProperties = {
+      fontSize: "1.25rem",
+      fontWeight: 600,
+      lineHeight: 1.4,
+      margin: 0,
+      ...style,
+    };
 
     return (
       <h2
@@ -132,6 +140,7 @@ export const DialogTitle = forwardRef<HTMLHeadingElement, DialogTitleProps>(
         id={id ?? titleId}
         className={className}
         data-part="title"
+        style={baseStyles}
         {...props}
       >
         {children}
@@ -150,8 +159,15 @@ export interface DialogDescriptionProps extends HTMLAttributes<HTMLParagraphElem
 export const DialogDescription = forwardRef<
   HTMLParagraphElement,
   DialogDescriptionProps
->(({ children, className, id, ...props }, ref) => {
+>(({ children, className, id, style, ...props }, ref) => {
   const { descriptionId } = useDialogContext();
+
+  const baseStyles: React.CSSProperties = {
+    fontSize: "0.875rem",
+    lineHeight: 1.6,
+    margin: "0.5rem 0 0",
+    ...style,
+  };
 
   return (
     <p
@@ -159,6 +175,7 @@ export const DialogDescription = forwardRef<
       id={id ?? descriptionId}
       className={className}
       data-part="description"
+      style={baseStyles}
       {...props}
     >
       {children}
