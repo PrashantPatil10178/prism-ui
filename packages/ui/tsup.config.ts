@@ -28,7 +28,18 @@ export default defineConfig([
           resolve("src/toast/toast-vanilla.js"),
           resolve("dist/toast-vanilla.js"),
         );
-        console.log("✅ CSS + vanilla JS files copied to dist");
+        // Copy CSS type declarations
+        copyFileSync(
+          resolve("prism-ui.css.d.ts"),
+          resolve("dist/prism-ui.css.d.ts"),
+        );
+        copyFileSync(
+          resolve("toast-vanilla.css.d.ts"),
+          resolve("dist/toast-vanilla.css.d.ts"),
+        );
+        console.log(
+          "✅ CSS + vanilla JS files + type declarations copied to dist",
+        );
       } catch (error) {
         console.error("❌ Error copying files:", error);
       }
