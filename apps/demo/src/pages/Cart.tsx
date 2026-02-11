@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, Card, CardBody, useToast } from "@prism-ui/react";
+import { Button, Card, CardBody, useToast } from "prism-ui-headless-react";
 import { useCart } from "../store";
 
 export default function Cart() {

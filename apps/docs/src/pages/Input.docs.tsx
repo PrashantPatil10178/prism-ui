@@ -1,4 +1,4 @@
-import { Input } from "@prism-ui/react";
+import { Input } from "prism-ui-headless-react";
 import DocSection from "../components/DocSection";
 import ComponentPreview from "../components/ComponentPreview";
 import CodeBlock from "../components/CodeBlock";
@@ -18,7 +18,7 @@ export function InputDemo() {
 }`;
 
 const cdnCode = `<!-- No framework needed! Just HTML + CSS -->
-<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react/prism-ui.css">
 
 <div data-component="input-wrapper">
   <label data-component="input-label" for="email">Email</label>
@@ -147,7 +147,7 @@ export default function InputDocs() {
       <CodeBlock
         language="html"
         code={`<!-- Just CSS — works with any framework or plain HTML -->
-<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">`}
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react/prism-ui.css">`}
       />
 
       <h2>API Reference</h2>

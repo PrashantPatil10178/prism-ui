@@ -1,6 +1,15 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { Button, Card, CardBody, Tabs, TabsList, TabsTrigger, TabsPanel, useToast } from "@prism-ui/react";
+import {
+  Button,
+  Card,
+  CardBody,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsPanel,
+  useToast,
+} from "prism-ui-headless-react";
 import { products, useCart } from "../store";
 
 export default function ProductDetail() {
@@ -8,8 +17,12 @@ export default function ProductDetail() {
   const product = products.find((p) => p.id === Number(id));
   const { addItem } = useCart();
   const { addToast } = useToast();
-  const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
-  const [selectedSize, setSelectedSize] = useState<string | undefined>(undefined);
+  const [selectedColor, setSelectedColor] = useState<string | undefined>(
+    undefined,
+  );
+  const [selectedSize, setSelectedSize] = useState<string | undefined>(
+    undefined,
+  );
   const [quantity, setQuantity] = useState(1);
 
   if (!product) {
@@ -35,7 +48,9 @@ export default function ProductDetail() {
     });
   };
 
-  const related = products.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 3);
+  const related = products
+    .filter((p) => p.category === product.category && p.id !== product.id)
+    .slice(0, 3);
 
   return (
     <div className="product-detail">
@@ -52,7 +67,11 @@ export default function ProductDetail() {
       <div className="detail-grid">
         <div className="detail-image">
           <img src={product.image} alt={product.name} />
-          {product.badge && <span className="product-badge product-badge-lg">{product.badge}</span>}
+          {product.badge && (
+            <span className="product-badge product-badge-lg">
+              {product.badge}
+            </span>
+          )}
         </div>
 
         <div className="detail-info">
@@ -60,7 +79,9 @@ export default function ProductDetail() {
           <h1>{product.name}</h1>
 
           <div className="detail-rating">
-            <span className="stars">{"★".repeat(Math.floor(product.rating))}</span>
+            <span className="stars">
+              {"★".repeat(Math.floor(product.rating))}
+            </span>
             <span>{product.rating}</span>
             <span className="review-count">({product.reviews} reviews)</span>
           </div>
@@ -69,9 +90,14 @@ export default function ProductDetail() {
             <span className="price-main">${product.price.toFixed(2)}</span>
             {product.originalPrice && (
               <>
-                <span className="price-original">${product.originalPrice.toFixed(2)}</span>
+                <span className="price-original">
+                  ${product.originalPrice.toFixed(2)}
+                </span>
                 <span className="price-discount">
-                  {Math.round((1 - product.price / product.originalPrice) * 100)}% OFF
+                  {Math.round(
+                    (1 - product.price / product.originalPrice) * 100,
+                  )}
+                  % OFF
                 </span>
               </>
             )}
@@ -117,27 +143,46 @@ export default function ProductDetail() {
           <div className="detail-option">
             <label>Quantity</label>
             <div className="quantity-control">
-              <Button variant="outline" size="icon" onClick={() => setQuantity(Math.max(1, quantity - 1))}>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setQuantity(Math.max(1, quantity - 1))}
+              >
                 −
               </Button>
               <span className="quantity-value">{quantity}</span>
-              <Button variant="outline" size="icon" onClick={() => setQuantity(quantity + 1)}>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setQuantity(quantity + 1)}
+              >
                 +
               </Button>
             </div>
           </div>
 
           <div className="detail-actions">
-            <Button variant="primary" size="lg" onClick={handleAddToCart} className="add-to-cart-btn">
+            <Button
+              variant="primary"
+              size="lg"
+              onClick={handleAddToCart}
+              className="add-to-cart-btn"
+            >
               Add to Cart — ${(product.price * quantity).toFixed(2)}
             </Button>
           </div>
 
           <Tabs defaultValue="details" className="detail-tabs">
             <TabsList className="detail-tab-list">
-              <TabsTrigger value="details" className="detail-tab">Details</TabsTrigger>
-              <TabsTrigger value="shipping" className="detail-tab">Shipping</TabsTrigger>
-              <TabsTrigger value="returns" className="detail-tab">Returns</TabsTrigger>
+              <TabsTrigger value="details" className="detail-tab">
+                Details
+              </TabsTrigger>
+              <TabsTrigger value="shipping" className="detail-tab">
+                Shipping
+              </TabsTrigger>
+              <TabsTrigger value="returns" className="detail-tab">
+                Returns
+              </TabsTrigger>
             </TabsList>
             <TabsPanel value="details" className="detail-tab-panel">
               <p>{product.description}</p>
@@ -172,7 +217,11 @@ export default function ProductDetail() {
           <h2>You May Also Like</h2>
           <div className="product-grid-sm">
             {related.map((p) => (
-              <Link to={`/products/${p.id}`} key={p.id} className="product-card-link">
+              <Link
+                to={`/products/${p.id}`}
+                key={p.id}
+                className="product-card-link"
+              >
                 <Card className="product-card product-card-sm">
                   <div className="product-image product-image-sm">
                     <img src={p.image} alt={p.name} loading="lazy" />

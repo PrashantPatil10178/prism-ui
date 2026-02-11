@@ -34,7 +34,7 @@ Modern teams need consistent behavior without visual lock-in. Prism UI solves th
 ```
 prism-ui/
 ├─ packages/
-│  └─ ui/              # @prism-ui/react - Headless component library
+│  └─ ui/              # prism-ui-headless-react - Headless component library
 ├─ apps/
 │  ├─ demo/            # Interactive showcase with theme switching
 │  └─ docs/            # Full documentation site
@@ -60,8 +60,14 @@ yarn add prism-ui-headless-react
 #### CDN for Vanilla JS
 
 ```html
+<!-- Include CSS -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/prism-ui-headless-react/prism-ui.css"
+/>
+
 <!-- Include Toast script -->
-<script src="https://unpkg.com/prism-ui-headless-react@latest/dist/toast-vanilla.js"></script>
+<script src="https://unpkg.com/prism-ui-headless-react/toast-vanilla.js"></script>
 
 <script>
   // Initialize Toast
@@ -107,7 +113,7 @@ pnpm dev --filter demo
 pnpm dev --filter docs
 
 # Build the UI package
-pnpm build --filter @prism-ui/react
+pnpm build --filter prism-ui-headless-react
 
 # Run all tests
 pnpm test
@@ -259,6 +265,7 @@ Import components and use them with your own styles:
 
 ```jsx
 import { Button } from "prism-ui-headless-react";
+import "prism-ui-headless-react/styles";
 
 function App() {
   return (
@@ -352,8 +359,8 @@ pnpm dev --filter docs
 pnpm build --filter docs
 
 # UI package
-pnpm build --filter @prism-ui/react
-pnpm test --filter @prism-ui/react
+pnpm build --filter prism-ui-headless-react
+pnpm test --filter prism-ui-headless-react
 ```
 
 ### Project Structure
@@ -372,7 +379,7 @@ prism-ui/
 │     ├─ package.json
 │     └─ vite.config.ts
 ├─ packages/
-│  └─ ui/                # @prism-ui/react component library
+│  └─ ui/                # prism-ui-headless-react component library
 │     ├─ src/
 │     │  ├─ button.tsx
 │     │  ├─ card.tsx
@@ -472,19 +479,15 @@ Following [Semantic Versioning](https://semver.org/):
 
 ### Package Configuration
 
-The package uses a dual-name strategy:
+The package uses the same name for workspace and publish:
 
-- **Workspace name**: `@prism-ui/react` (for local development)
-- **Published name**: `prism-ui-headless-react` (on npm)
+- **Package name**: `prism-ui-headless-react`
 
 This is configured in `packages/ui/package.json`:
 
 ```json
 {
-  "name": "@prism-ui/react",
-  "publishConfig": {
-    "name": "prism-ui-headless-react"
-  }
+  "name": "prism-ui-headless-react"
 }
 ```
 

@@ -16,12 +16,12 @@ A lightweight, zero-dependency toast notification system. No React, no build too
 
 ```html
 <!-- Include the script -->
-<script src="https://unpkg.com/@prism-ui/react@latest/dist/toast-vanilla.js"></script>
+<script src="https://unpkg.com/prism-ui-headless-react/toast-vanilla.js"></script>
 
 <!-- Include the styles -->
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@prism-ui/react@latest/dist/toast-vanilla.css"
+  href="https://unpkg.com/prism-ui-headless-react/toast-vanilla.css"
 />
 ```
 
@@ -40,10 +40,10 @@ Download `toast-vanilla.js` and `toast-vanilla.css` and include them in your pro
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://unpkg.com/@prism-ui/react@latest/dist/toast-vanilla.js"></script>
+    <script src="https://unpkg.com/prism-ui-headless-react/toast-vanilla.js"></script>
     <link
       rel="stylesheet"
-      href="https://unpkg.com/@prism-ui/react@latest/dist/toast-vanilla.css"
+      href="https://unpkg.com/prism-ui-headless-react/toast-vanilla.css"
     />
   </head>
   <body>

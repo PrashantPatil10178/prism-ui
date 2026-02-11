@@ -7,7 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
   Button,
-} from "@prism-ui/react";
+} from "prism-ui-headless-react";
 import DocSection from "../components/DocSection";
 import ComponentPreview from "../components/ComponentPreview";
 import CodeBlock from "../components/CodeBlock";
@@ -36,8 +36,8 @@ export function DialogDemo() {
 }`;
 
 const cdnCode = `<!-- No framework needed! Just HTML + CSS + JS -->
-<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">
-<script src="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react/prism-ui.css">
+<script src="https://unpkg.com/prism-ui-headless-react/prism-ui.js"></script>
 
 <!-- Trigger button: data-dialog-trigger points to dialog id -->
 <button data-component="button" data-variant="primary"
@@ -161,8 +161,8 @@ export default function DialogDocs() {
       <CodeBlock
         language="html"
         code={`<!-- Just CSS + JS — works with any framework or plain HTML -->
-<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">
-<script src="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.js"></script>`}
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react/prism-ui.css">
+<script src="https://unpkg.com/prism-ui-headless-react/prism-ui.js"></script>`}
       />
 
       <h2>API Reference</h2>

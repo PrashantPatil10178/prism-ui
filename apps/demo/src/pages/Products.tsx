@@ -1,6 +1,15 @@
 import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { Button, Card, CardBody, Input, Tabs, TabsList, TabsTrigger, TabsPanel } from "@prism-ui/react";
+import {
+  Button,
+  Card,
+  CardBody,
+  Input,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsPanel,
+} from "prism-ui-headless-react";
 import { products, categories } from "../store";
 
 export default function ProductsPage() {
@@ -27,7 +36,9 @@ export default function ProductsPage() {
           placeholder="Search products..."
           className="search-input"
           value={search}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setSearch(e.target.value)
+          }
         />
       </div>
 
@@ -45,7 +56,11 @@ export default function ProductsPage() {
 
       <div className="product-grid">
         {filtered.map((p) => (
-          <Link to={`/products/${p.id}`} key={p.id} className="product-card-link">
+          <Link
+            to={`/products/${p.id}`}
+            key={p.id}
+            className="product-card-link"
+          >
             <Card className="product-card">
               <div className="product-image">
                 <img src={p.image} alt={p.name} loading="lazy" />
@@ -61,7 +76,9 @@ export default function ProductsPage() {
                 <div className="product-price-row">
                   <span className="product-price">${p.price.toFixed(2)}</span>
                   {p.originalPrice && (
-                    <span className="product-original">${p.originalPrice.toFixed(2)}</span>
+                    <span className="product-original">
+                      ${p.originalPrice.toFixed(2)}
+                    </span>
                   )}
                 </div>
               </CardBody>

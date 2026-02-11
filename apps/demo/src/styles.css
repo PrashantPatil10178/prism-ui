@@ -39,11 +39,6 @@ ol {
   list-style: none;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   Theme System — 5 colors × 2 modes = 10 combinations
-   ═══════════════════════════════════════════════════════════════════ */
-
-/* — ZINC — */
 :root[data-theme="zinc"][data-mode="dark"] {
   --bg: #09090b;
   --bg-secondary: #18181b;

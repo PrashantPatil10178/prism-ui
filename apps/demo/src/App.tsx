@@ -7,7 +7,7 @@ import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import { useTheme } from "./store";
-import { Toaster } from "@prism-ui/react";
+import { Toaster } from "prism-ui-headless-react";
 
 function ScrollToTop() {
   const { pathname } = useLocation();

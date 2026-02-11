@@ -1,6 +1,12 @@
 import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Button, Card, CardBody, Input, useToast } from "@prism-ui/react";
+import {
+  Button,
+  Card,
+  CardBody,
+  Input,
+  useToast,
+} from "prism-ui-headless-react";
 import { useCart } from "../store";
 
 export default function Checkout() {
@@ -34,7 +40,8 @@ export default function Checkout() {
       clearCart();
       addToast({
         title: "Order placed! 🎉",
-        description: "Thank you for your purchase. Your order is being processed.",
+        description:
+          "Thank you for your purchase. Your order is being processed.",
         type: "success",
         duration: 5000,
       });
@@ -49,7 +56,9 @@ export default function Checkout() {
         <h1>Nothing to Checkout</h1>
         <p>Your cart is empty. Add some items first.</p>
         <Link to="/products">
-          <Button variant="primary" size="lg">Browse Products</Button>
+          <Button variant="primary" size="lg">
+            Browse Products
+          </Button>
         </Link>
       </div>
     );
@@ -163,12 +172,22 @@ export default function Checkout() {
               <div className="summary-items">
                 {items.map((item) => (
                   <div key={item.id} className="summary-item">
-                    <img src={item.product.image} alt={item.product.name} className="summary-item-img" />
+                    <img
+                      src={item.product.image}
+                      alt={item.product.name}
+                      className="summary-item-img"
+                    />
                     <div className="summary-item-info">
-                      <span className="summary-item-name">{item.product.name}</span>
-                      <span className="summary-item-qty">Qty: {item.quantity}</span>
+                      <span className="summary-item-name">
+                        {item.product.name}
+                      </span>
+                      <span className="summary-item-qty">
+                        Qty: {item.quantity}
+                      </span>
                     </div>
-                    <span className="summary-item-price">${(item.product.price * item.quantity).toFixed(2)}</span>
+                    <span className="summary-item-price">
+                      ${(item.product.price * item.quantity).toFixed(2)}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -180,7 +199,9 @@ export default function Checkout() {
                 </div>
                 <div className="summary-row">
                   <span>Shipping</span>
-                  <span>{shipping === 0 ? "FREE" : `$${shipping.toFixed(2)}`}</span>
+                  <span>
+                    {shipping === 0 ? "FREE" : `$${shipping.toFixed(2)}`}
+                  </span>
                 </div>
                 <div className="summary-row">
                   <span>Tax</span>
@@ -199,7 +220,9 @@ export default function Checkout() {
                 className="place-order-btn"
                 disabled={submitting}
               >
-                {submitting ? "Processing…" : `Place Order — $${orderTotal.toFixed(2)}`}
+                {submitting
+                  ? "Processing…"
+                  : `Place Order — $${orderTotal.toFixed(2)}`}
               </Button>
             </CardBody>
           </Card>

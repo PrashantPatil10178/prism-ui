@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Button } from "@prism-ui/react";
+import { Button } from "prism-ui-headless-react";
 import { useCart, useTheme, type ThemeColor } from "./store";
 
 const themeColors: { id: ThemeColor; label: string; swatch: string }[] = [
@@ -165,7 +165,7 @@ export function Footer() {
       </div>
       <div className="footer-bottom">
         <p>
-          © 2026 PrismStore. Built with <strong>@prism-ui/react</strong>
+          © 2026 PrismStore. Built with <strong>prism-ui-headless-react</strong>
         </p>
       </div>
     </footer>

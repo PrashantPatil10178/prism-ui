@@ -118,14 +118,14 @@ export default function Introduction() {
                 <span className="t-blue">link</span>{" "}
                 <span className="t-yellow">rel</span>
                 {'="stylesheet"'} <span className="t-yellow">href</span>
-                {'="...prism-ui.css"'}
+                {'=".../prism-ui.css"'}
                 {" />"}
               </span>
               <span className="t-line">
                 {"<"}
                 <span className="t-blue">script</span>{" "}
                 <span className="t-yellow">src</span>
-                {'="...prism-ui.js"'}
+                {'=".../prism-ui.js"'}
                 {">"}
                 {"</"}
                 <span className="t-blue">script</span>

@@ -1,4 +1,9 @@
-import { Tabs, TabsList, TabsPanel, TabsTrigger } from "@prism-ui/react";
+import {
+  Tabs,
+  TabsList,
+  TabsPanel,
+  TabsTrigger,
+} from "prism-ui-headless-react";
 import DocSection from "../components/DocSection";
 import ComponentPreview from "../components/ComponentPreview";
 import CodeBlock from "../components/CodeBlock";
@@ -27,8 +32,8 @@ export function TabsDemo() {
 }`;
 
 const cdnCode = `<!-- No framework needed! Just HTML + CSS + JS -->
-<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">
-<script src="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react/prism-ui.css">
+<script src="https://unpkg.com/prism-ui-headless-react/prism-ui.js"></script>
 
 <!-- Tabs: data-default sets the initially active tab -->
 <div data-component="tabs" data-default="account">
@@ -156,8 +161,8 @@ export default function TabsDocs() {
       <CodeBlock
         language="html"
         code={`<!-- Just CSS + JS — works with any framework or plain HTML -->
-<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">
-<script src="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.js"></script>`}
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react/prism-ui.css">
+<script src="https://unpkg.com/prism-ui-headless-react/prism-ui.js"></script>`}
       />
 
       <h2>API Reference</h2>

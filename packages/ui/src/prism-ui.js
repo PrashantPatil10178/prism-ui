@@ -7,8 +7,8 @@
  * No React, Vue, Angular, or any framework dependency required.
  *
  * Usage:
- *   <link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">
- *   <script src="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.js"></script>
+ *   <link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react/prism-ui.css">
+ *   <script src="https://unpkg.com/prism-ui-headless-react/prism-ui.js"></script>
  */
 (function (global) {
   "use strict";

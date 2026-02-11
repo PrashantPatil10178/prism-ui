@@ -1,5 +1,15 @@
 import { Link } from "react-router-dom";
-import { Button, Card, CardHeader, CardBody, Input, Tabs, TabsList, TabsTrigger, TabsPanel } from "@prism-ui/react";
+import {
+  Button,
+  Card,
+  CardHeader,
+  CardBody,
+  Input,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsPanel,
+} from "prism-ui-headless-react";
 import { products, categories, useCart } from "../store";
 
 function HeroSection() {
@@ -13,7 +23,8 @@ function HeroSection() {
           <span className="hero-accent">You'll Love</span>
         </h1>
         <p className="hero-subtitle">
-          Curated collection of premium products. Built as a demo showcase for Prism UI headless components.
+          Curated collection of premium products. Built as a demo showcase for
+          Prism UI headless components.
         </p>
         <div className="hero-actions">
           <Link to="/products">
@@ -66,7 +77,11 @@ function FeaturedProducts() {
       </div>
       <div className="product-grid">
         {featured.map((p) => (
-          <Link to={`/products/${p.id}`} key={p.id} className="product-card-link">
+          <Link
+            to={`/products/${p.id}`}
+            key={p.id}
+            className="product-card-link"
+          >
             <Card className="product-card">
               <div className="product-image">
                 <img src={p.image} alt={p.name} loading="lazy" />
@@ -82,7 +97,9 @@ function FeaturedProducts() {
                 <div className="product-price-row">
                   <span className="product-price">${p.price.toFixed(2)}</span>
                   {p.originalPrice && (
-                    <span className="product-original">${p.originalPrice.toFixed(2)}</span>
+                    <span className="product-original">
+                      ${p.originalPrice.toFixed(2)}
+                    </span>
                   )}
                 </div>
               </CardBody>
@@ -107,23 +124,37 @@ function CategoryTabs() {
       <h2>Shop by Category</h2>
       <Tabs defaultValue="clothing" className="category-tabs">
         <TabsList className="category-tab-list">
-          <TabsTrigger value="clothing" className="category-tab">Clothing</TabsTrigger>
-          <TabsTrigger value="electronics" className="category-tab">Electronics</TabsTrigger>
-          <TabsTrigger value="accessories" className="category-tab">Accessories</TabsTrigger>
-          <TabsTrigger value="footwear" className="category-tab">Footwear</TabsTrigger>
+          <TabsTrigger value="clothing" className="category-tab">
+            Clothing
+          </TabsTrigger>
+          <TabsTrigger value="electronics" className="category-tab">
+            Electronics
+          </TabsTrigger>
+          <TabsTrigger value="accessories" className="category-tab">
+            Accessories
+          </TabsTrigger>
+          <TabsTrigger value="footwear" className="category-tab">
+            Footwear
+          </TabsTrigger>
         </TabsList>
         {Object.entries(catProducts).map(([cat, items]) => (
           <TabsPanel key={cat} value={cat} className="category-panel">
             <div className="product-grid-sm">
               {items.map((p) => (
-                <Link to={`/products/${p.id}`} key={p.id} className="product-card-link">
+                <Link
+                  to={`/products/${p.id}`}
+                  key={p.id}
+                  className="product-card-link"
+                >
                   <Card className="product-card product-card-sm">
                     <div className="product-image product-image-sm">
                       <img src={p.image} alt={p.name} loading="lazy" />
                     </div>
                     <CardBody className="product-info">
                       <h3 className="product-name">{p.name}</h3>
-                      <span className="product-price">${p.price.toFixed(2)}</span>
+                      <span className="product-price">
+                        ${p.price.toFixed(2)}
+                      </span>
                     </CardBody>
                   </Card>
                 </Link>

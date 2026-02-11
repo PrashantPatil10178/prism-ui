@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ToastProvider, useToast, Toaster } from "@prism-ui/react";
+import { ToastProvider, useToast, Toaster } from "prism-ui-headless-react";
 import CodeBlock from "@/components/CodeBlock";
 import ComponentPreview from "@/components/ComponentPreview";
 import {
@@ -92,8 +92,8 @@ function YourComponent() {
 }`;
 
   const cdnCode = `<!-- No framework needed! Just HTML + CSS + JS -->
-<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">
-<script src="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react/prism-ui.css">
+<script src="https://unpkg.com/prism-ui-headless-react/prism-ui.js"></script>
 
 <!-- Trigger toasts with PrismUI.toast() or shortcuts -->
 <button data-component="button" data-variant="primary"
@@ -133,8 +133,8 @@ function YourComponent() {
   const vanillaPreviewCode = `<!DOCTYPE html>
 <html>
 <head>
-  <script src="https://unpkg.com/prism-ui-headless-react@latest/dist/toast-vanilla.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/toast-vanilla.css">
+  <script src="https://unpkg.com/prism-ui-headless-react/toast-vanilla.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react/toast-vanilla.css">
 </head>
 <body>
   <button onclick="showToast()">Show Toast</button>
@@ -201,8 +201,8 @@ yarn add prism-ui-headless-react`}
             <CodeBlock
               language="html"
               code={`<!-- Just CSS + JS — works with any framework or plain HTML -->
-<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.css">
-<script src="https://unpkg.com/prism-ui-headless-react@latest/dist/prism-ui.js"></script>`}
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react/prism-ui.css">
+<script src="https://unpkg.com/prism-ui-headless-react/prism-ui.js"></script>`}
             />
           </section>
 
@@ -589,10 +589,10 @@ addToast({
             <CodeBlock
               language="html"
               code={`<!-- Include the script -->
-<script src="https://unpkg.com/prism-ui-headless-react@latest/dist/toast-vanilla.js"><\/script>
+<script src="https://unpkg.com/prism-ui-headless-react/toast-vanilla.js"><\/script>
 
 <!-- Include the styles -->
-<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/toast-vanilla.css"}`}
+<link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react/toast-vanilla.css"}`}
             />
           </section>
 
@@ -607,8 +607,8 @@ addToast({
               code={`<!DOCTYPE html>
 <html>
 <head>
-  <script src="https://unpkg.com/prism-ui-headless-react@latest/dist/toast-vanilla.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react@latest/dist/toast-vanilla.css">
+  <script src="https://unpkg.com/prism-ui-headless-react/toast-vanilla.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/prism-ui-headless-react/toast-vanilla.css">
 </head>
 <body>
   <button onclick="showToast()">Show Toast</button>
