@@ -1,24 +1,86 @@
-import { ToastProvider, useToast, Toaster } from 'prism-ui-headless-react';
-
-function App() {
-  return (
-    <ToastProvider>
-      <YourApp />
-      <Toaster className="toaster-container" />
-    </ToastProvider>
-  );
-}
-
-function YourComponent() {
-  const { addToast } = useToast();
-
-  return (
-    <button onClick={() => addToast({
-      title: 'Success!',
-      description: 'Your changes have been saved.',
-      type: 'success'
-    })}>
-      Show Toast
-    </button>
-  );
+{
+  "name": "prism-ui-headless-react",
+  "version": "1.5.0",
+  "description": "Production-ready headless React components with zero visual opinions and exceptional accessibility",
+  "keywords": [
+    "react",
+    "headless",
+    "ui",
+    "components",
+    "accessible",
+    "typescript",
+    "a11y",
+    "cdn",
+    "css"
+  ],
+  "author": "Prism UI Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PrashantPatil10178/prism-ui.git"
+  },
+  "homepage": "https://github.com/PrashantPatil10178/prism-ui#readme",
+  "bugs": {
+    "url": "https://github.com/PrashantPatil10178/prism-ui/issues"
+  },
+  "private": false,
+  "sideEffects": [
+    "**/*.css",
+    "./dist/prism-ui.js",
+    "./dist/toast-vanilla.js"
+  ],
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "style": "dist/prism-ui.css",
+  "unpkg": "dist/index.global.js",
+  "jsdelivr": "dist/index.global.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles": "./dist/prism-ui.css",
+    "./style.css": "./dist/prism-ui.css",
+    "./prism-ui.css": "./dist/prism-ui.css",
+    "./prism-ui.js": "./dist/prism-ui.js",
+    "./toast-vanilla.css": "./dist/toast-vanilla.css",
+    "./toast-vanilla.js": "./dist/toast-vanilla.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint . --max-warnings 0",
+    "test": "vitest run",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@testing-library/jest-dom": "^6.7.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^22.15.3",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "axe-core": "^4.10.3",
+    "eslint": "^9.39.1",
+    "jsdom": "^25.0.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tsup": "^8.3.6",
+    "typescript": "5.9.2",
+    "vitest": "^2.1.5",
+    "vitest-axe": "^0.1.0"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "dependencies": {}
 }

@@ -20,7 +20,7 @@ importers:
 
   apps/demo:
     dependencies:
-      '@prism-ui/react':
+      prism-ui-headless-react:
         specifier: workspace:*
         version: link:../../packages/ui
       react:
@@ -81,9 +81,6 @@ importers:
 
   apps/docs:
     dependencies:
-      '@prism-ui/react':
-        specifier: workspace:*
-        version: link:../../packages/ui
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -93,6 +90,9 @@ importers:
       motion:
         specifier: ^12.0.0
         version: 12.33.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      prism-ui-headless-react:
+        specifier: workspace:*
+        version: link:../../packages/ui
       react:
         specifier: ^19.2.0
         version: 19.2.0
